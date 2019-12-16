@@ -1,0 +1,58 @@
+<div class="container" data-ng-app="productEdit" data-ng-controller="productCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+    <div class="jd-rest-product-models-block" id="jd_rest_product_models_block">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Product related Models</h3>
+                <div id="model_buttons">
+                    <span id="productavailability_click" data-ng-click="showProductAvailability = !showProductAvailability"
+                          style="{{ showProductAvailability ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">ProductAvailability, </span>
+                    <span id="productusefulinfo_click" data-ng-click="showProductUsefulInfo = !showProductUsefulInfo"
+                          style="{{ showProductUsefulInfo ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">ProductUsefulInfo, </span>
+                    <span id="activity_click" data-ng-click="showActivity = !showActivity"
+                          style="{{ showActivity ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">Activity, </span>
+                    <span id="addons_click" data-ng-click="showAddons = !showAddons"
+                          style="{{ showAddons ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">Addons, </span>
+                    <span id="blockeddates_click" data-ng-click="showBlockedDates = !showBlockedDates"
+                          style="{{ showBlockedDates ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">BlockedDates, </span>
+                    <span id="day_click" data-ng-click="showDay = !showDay"
+                          style="{{ showDay ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">Day, </span>
+                    <span id="grouppricediscount_click" data-ng-click="showGroupPriceDiscount = !showGroupPriceDiscount"
+                          style="{{ showGroupPriceDiscount ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">GroupPriceDiscount, </span>
+                    <span id="personspricediscount_click" data-ng-click="showPersonsPriceDiscount = !showPersonsPriceDiscount"
+                          style="{{ showPersonsPriceDiscount ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">PersonsPriceDiscount, </span>
+                    <span id="productdiscounts_click" data-ng-click="showProductDiscounts = !showProductDiscounts"
+                          style="{{ showProductDiscounts ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">ProductDiscounts, </span>
+                    <span id="productoffers_click" data-ng-click="showProductOffers = !showProductOffers"
+                          style="{{ showProductOffers ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">ProductOffers, </span>
+                    <span id="productreview_click" data-ng-click="showProductReview = !showProductReview"
+                          style="{{ showProductReview ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">ProductReview, </span>
+                    <span id="specificdate_click" data-ng-click="showSpecificDate = !showSpecificDate"
+                          style="{{ showSpecificDate ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">SpecificDate, </span>
+                    <span id="productprovideditems_click" data-ng-click="showProvidedItems = !showProvidedItems"
+                          style="{{ showProvidedItems ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">ProvidedItems, </span>
+                    <span id="image_click" data-ng-click="showImages = !showImages"
+                          style="{{ showImages ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">Images, </span>
+                    <span id="tag_click" data-ng-click="showTags = !showTags"
+                          style="{{ showTags ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">Tags, </span>
+                    <span id="producttotag_click" data-ng-click="showProductToTag = !showProductToTag"
+                          style="{{ showProductToTag ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">ProductToTag, </span>
+                    <span id="starttime_click" data-ng-click="showStartTime = !showStartTime"
+                          style="{{ showStartTime ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">StartTime </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center><div  id="jd_error_container" style="color: red;"></div></center>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center><div  id="jd_success_container" style="color: darkolivegreen;"></div></center>
+        </div>
+    </div>
+    <div id="product_edit_container"></div>
+</div>

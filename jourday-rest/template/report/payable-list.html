@@ -1,0 +1,40 @@
+<div class="container" data-ng-app="report" data-ng-controller="reportCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+    <h3>Payable</h3>
+    <div class="jd-f-right m-b-3" id="download_links">
+        <a class="btn btn-success" href="javascript:void 0" id="report_pdf" download="Totals pdf">Download PDF</a>
+        <a class="btn btn-success m-l-3" href="javascript:void 0" id="report_excel" download="Totals excel">Download Excel</a>
+    </div>
+    <table id="table_report" class="display compact" cellspacing="0" width="100%" style="margin-bottom: 100px;">
+        <thead>
+        <tr>
+            <th style="text-transform: uppercase; text-align: center;">User</th>
+            <th style="text-transform: uppercase; text-align: center;">Provider ID</th>
+            <th style="text-transform: uppercase; text-align: center;">Provider Type</th>
+            <th style="text-transform: uppercase; text-align: center;">Product Name</th>
+            <th style="text-transform: uppercase; text-align: center;">Category Name</th>
+            <th style="text-transform: uppercase; text-align: center;">Date</th>
+            <th style="text-transform: uppercase; text-align: center;">Revenue</th>
+        </tr>
+        </thead>
+        <tbody id="table_body">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="jd-f-left">
+        <a class="btn btn-info hidden" href="javascript:void 0" id="jd_list_previous"><< Previous {{jd_rest_limit}}</a>
+    </div>
+    <div class="jd-f-right">
+        <a class="btn btn-info hidden" href="javascript:void 0" id="jd_list_next">Next {{jd_rest_limit}} >></a>
+    </div>
+    <div style="margin-top: 50px;"></div>
+</div>

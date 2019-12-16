@@ -1,0 +1,85 @@
+<div class="container" data-ng-app="messagesList" data-ng-controller="messageCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+
+    <div class="jd-rest-recipient-block" id="jd_rest_recipient_block">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Recipients</h3>
+                <div id="recipients_buttons">
+                    <span id="All_click" data-ng-click="getAll = !getAll" class="jd-pointer"
+                          style="{{ getAll ? 'font-weight: 600;' : 'font-weight: 300;'}}">All, </span>
+                    <span id="Admin_click" data-ng-click="getAdmin = !getAdmin" class="jd-pointer"
+                          style="{{ getAdmin ? 'font-weight: 600;' : 'font-weight: 300;'}}">Admin, </span>
+                    <span id="JourdayProvider_click" data-ng-click="getJourdayProvider = !getJourdayProvider" class="jd-pointer"
+                          style="{{ getJourdayProvider ? 'font-weight: 600;' : 'font-weight: 300;'}}">Jourday Provider, </span>
+                    <span id="JourdayBeneficiary_click" data-ng-click="getJourdayBeneficiary = !getJourdayBeneficiary" class="jd-pointer"
+                          style="{{ getJourdayBeneficiary ? 'font-weight: 600;' : 'font-weight: 300;'}}">Jourday Beneficiary, </span>
+                    <span id="ActivityProvider_click" data-ng-click="getActivityProvider = !getActivityProvider" class="jd-pointer"
+                          style="{{ getActivityProvider ? 'font-weight: 600;' : 'font-weight: 300;'}}">Activity Provider, </span>
+                    <span id="CustomerSupport_click" data-ng-click="getCustomerSupport = !getCustomerSupport" class="jd-pointer"
+                          style="{{ getCustomerSupport ? 'font-weight: 600;' : 'font-weight: 300;'}}">Customer Support, </span>
+                    <span id="SalesResponsible_click" data-ng-click="getSalesResponsible = !getSalesResponsible" class="jd-pointer"
+                          style="{{ getSalesResponsible ? 'font-weight: 600;' : 'font-weight: 300;'}}">Sales Responsible, </span>
+                    <span id="Reseller_click" data-ng-click="getReseller = !getReseller" class="jd-pointer"
+                          style="{{ getReseller ? 'font-weight: 600;' : 'font-weight: 300;'}}">Reseller, </span>
+                    <span id="Affiliate_click" data-ng-click="getAffiliate = !getAffiliate" class="jd-pointer"
+                          style="{{ getAffiliate ? 'font-weight: 600;' : 'font-weight: 300;'}}">Affiliate, </span>
+                    <span id="Customer_click" data-ng-click="getCustomer = !getCustomer" class="jd-pointer"
+                          style="{{ getCustomer ? 'font-weight: 600;' : 'font-weight: 300;'}}">Customer </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="jd-rest-recipient-block" id="jd_rest_read_block">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Read status</h3>
+                <div id="recipients_read_buttons">
+                    <span id="all_messages_click" data-ng-click="showAll = !showAll" class="jd-pointer"
+                          style="{{ showAll ? 'font-weight: 600;' : 'font-weight: 300;'}}">Show All, &nbsp;</span>
+                    <span id="read_messages_click" data-ng-click="showRead = !showRead" class="jd-pointer"
+                          style="{{ showRead ? 'font-weight: 600;' : 'font-weight: 300;'}}">Read, &nbsp;</span>
+                    <span id="unread_messages_click" data-ng-click="showUnread = !showUnread" class="jd-pointer"
+                          style="{{ showUnread ? 'font-weight: 600;' : 'font-weight: 300;'}}">Unread </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Messages</h3>
+    <table id="table_messages" class="display compact" cellspacing="0" width="100%" style="margin-bottom: 100px;">
+        <thead>
+        <tr>
+            <th style="text-transform: uppercase; text-align: center;">ID</th>
+            <th style="text-transform: uppercase; text-align: center;">Parent ID</th>
+            <th style="text-transform: uppercase; text-align: center;">Sender</th>
+            <th style="text-transform: uppercase; text-align: center;">Recipient</th>
+            <th style="text-transform: uppercase; text-align: center;">Title</th>
+            <th style="text-transform: uppercase; text-align: center;">Category</th>
+            <th style="text-transform: uppercase; text-align: center;">Sent Date</th>
+            <th style="text-transform: uppercase; text-align: center;">Read Date</th>
+        </tr>
+        </thead>
+        <tbody id="table_body">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="jd-f-left">
+        <a class="btn btn-info hidden" href="javascript:void 0" id="jd_message_list_previous"><< Previous {{jd_rest_limit}}</a>
+    </div>
+    <div class="jd-f-right">
+        <a class="btn btn-info hidden" href="javascript:void 0" id="jd_message_list_next">Next {{jd_rest_limit}} >></a>
+    </div>
+    <div style="margin-top: 50px;"></div>
+</div>

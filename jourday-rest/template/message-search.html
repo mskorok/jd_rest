@@ -1,0 +1,1733 @@
+<div class="container" data-ng-app="messageSearch" data-ng-controller="searchCtr" id="message_search_container">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+    <div class="jd-rest-message-models-block">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Models for search</h3>
+                <div id="model_buttons">
+                    <span data-ng-click="showReceiver = !showReceiver"  class="jd-pointer"
+                          style="{{ showReceiver ? 'font-weight: 600' : 'font-weight: 300'}}">Receiver, </span>
+                    <span data-ng-click="showAddresser = !showAddresser"  class="jd-pointer"
+                          style="{{ showAddresser ? 'font-weight: 600' : 'font-weight: 300'}}">Addresser, </span>
+                    <span data-ng-click="showMessengerCategory = !showMessengerCategory"  class="jd-pointer"
+                          style="{{ showMessengerCategory ? 'font-weight: 600' : 'font-weight: 300'}}">MessengerCategory, </span>
+                    <span data-ng-click="showChildren = !showChildren"  class="jd-pointer"
+                          style="{{ showChildren ? 'font-weight: 600' : 'font-weight: 300'}}">Children, </span>
+                    <span data-ng-click="showParent = !showParent"  class="jd-pointer"
+                          style="{{ showParent ? 'font-weight: 600' : 'font-weight: 300'}}">Parent </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-tabs m-t-1" id="message_search_tab" role="tablist">
+        <li class="nav-item active">
+            <a class="nav-link active" id="message_search_form_tab" data-toggle="tab" href="#message_search_form"
+               role="tab"
+               aria-controls="message_search_form" aria-selected="true">Search</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="message_search_result_tab" data-toggle="tab" href="#message_search_result"
+               role="tab"
+               aria-controls="message_search_result" aria-selected="false">Result</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="message_search_tab_content">
+        <div class="tab-pane fade active in" id="message_search_form" role="tabpanel"
+             aria-labelledby="message_search_form_tab">
+            <div class="jd-rest-message-search-block">
+                <form id="rest_message_search_form" autocomplete="off" name="messageForm">
+                    <div data-ng-show="showReceiver">
+                        <div class="row m-t-1">
+                            <center><h3>Receiver</h3></center>
+                        </div>
+                        <div class="row m-t-1">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_id_input">ID</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverID"
+                                               autocomplete="off" id="receiver_id_input"
+                                               name="receiver_id_input"
+                                               aria-describedby="receiver_id_help" placeholder="ID">
+                                        <small id="receiver_id_help" class="form-text text-muted">This field is for
+                                            search by ID
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_first_name_input">FirstName</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverFirstName"
+                                               autocomplete="off" id="receiver_first_name_input"
+                                               name="receiver_first_name_input"
+                                               aria-describedby="receiver_first_name_help" placeholder="FirstName">
+                                        <small id="receiver_first_name_help" class="form-text text-muted">This field is
+                                            for search by FirstName
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverFirstNameOperators" type="radio"
+                                                               name="receiver_first_name" id="receiver_first_name_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="receiver_first_name_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverFirstNameOperators" type="radio"
+                                                               name="receiver_first_name" id="receiver_first_name_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="receiver_first_name_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_last_name_input">LastName</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverLastName"
+                                               autocomplete="off" id="receiver_last_name_input"
+                                               name="receiver_last_name_input"
+                                               aria-describedby="receiver_last_name_help" placeholder="LastName">
+                                        <small id="receiver_last_name_help" class="form-text text-muted">This field is
+                                            for search by LastName
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverLastNameOperators" type="radio"
+                                                               name="receiver_last_name" id="receiver_last_name_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="receiver_last_name_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverLastNameOperators" type="radio"
+                                                               name="receiver_last_name" id="receiver_last_name_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="receiver_last_name_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_email_input" class="jd-block">Email</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverEmail"
+                                               autocomplete="off" id="receiver_email_input"
+                                               name="receiver_email_input"
+                                               aria-describedby="receiver_email_help" placeholder="Email">
+                                        <small id="receiver_email_help" class="form-text text-muted">This field is for
+                                            search by Email
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverEmailOperators" type="radio"
+                                                               name="receiver_email" id="receiver_email_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="receiver_email_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverEmailOperators" type="radio"
+                                                               name="receiver_email" id="receiver_email_eq" value="eq"
+                                                               checked="checked">
+                                                        <label class="form-check-label" for="receiver_email_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_address1_input">Address1</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverAddress1"
+                                               autocomplete="off" id="receiver_address1_input"
+                                               name="receiver_address1_input"
+                                               aria-describedby="receiver_address1_help" placeholder="Address1">
+                                        <small id="receiver_address1_help" class="form-text text-muted">This field is
+                                            for
+                                            search by Address1
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverAddress1Operators" type="radio"
+                                                               name="receiver_address1" id="receiver_address1_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="receiver_address1_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverAddress1Operators" type="radio"
+                                                               name="receiver_address1" id="receiver_address1_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="receiver_address1_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_address2_input">Address2</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverAddress2"
+                                               autocomplete="off" id="receiver_address2_input"
+                                               name="receiver_address2_input"
+                                               aria-describedby="receiver_address2_help" placeholder="Address2">
+                                        <small id="receiver_address2_help" class="form-text text-muted">This field is
+                                            for
+                                            search by Address2
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverAddress2Operators" type="radio"
+                                                               name="receiver_address2" id="receiver_address2_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="receiver_address2_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverAddress2Operators" type="radio"
+                                                               name="receiver_address1" id="receiver_address2_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="receiver_address2_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_city_select">City</label>
+                                        <select class="form-control" data-ng-model="receiverCity"
+                                                id="receiver_city_select"
+                                                name="receiver_city_select"
+                                                aria-describedby="receiver_city_help"
+                                                data-ng-options="item.id as item.name for item in cities_name">
+                                        </select>
+                                        <small id="receiver_city_help" class="form-text text-muted">This field is for
+                                            search by City
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_post_code_input">PostCode</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverPostCode"
+                                               autocomplete="off" id="receiver_post_code_input"
+                                               name="receiver_post_code_input"
+                                               aria-describedby="receiver_post_code_help" placeholder="PostCode">
+                                        <small id="receiver_post_code_help" class="form-text text-muted">This field is
+                                            for search by PostCode
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverPostCodeOperators" type="radio"
+                                                               name="receiver_post_code" id="receiver_post_code_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="receiver_post_code_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverPostCodeOperators" type="radio"
+                                                               name="receiver_post_code" id="receiver_post_code_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="receiver_post_code_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_phone_input" class="jd-block">Phone</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverPhone"
+                                               autocomplete="off" id="receiver_phone_input"
+                                               name="receiver_phone_input"
+                                               aria-describedby="receiver_phone_help" placeholder="Phone">
+                                        <small id="receiver_phone_help" class="form-text text-muted">This field is for
+                                            search by Phone
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverPhoneOperators" type="radio"
+                                                               name="receiver_phone" id="receiver_phone_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="receiver_phone_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverPhoneOperators" type="radio"
+                                                               name="receiver_phone" id="receiver_phone_eq" value="eq"
+                                                               checked="checked">
+                                                        <label class="form-check-label" for="receiver_phone_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_mobile_input" class="jd-block">Mobile</label>
+                                        <input type="text" class="form-control" data-ng-model="receiverMobile"
+                                               autocomplete="off" id="receiver_mobile_input"
+                                               name="receiver_mobile_input"
+                                               aria-describedby="receiver_mobile_help" placeholder="Mobile">
+                                        <small id="receiver_mobile_help" class="form-text text-muted">This field is for
+                                            search by Mobile
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverMobileOperators" type="radio"
+                                                               name="receiver_mobile" id="receiver_mobile_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="receiver_mobile_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverMobileOperators" type="radio"
+                                                               name="receiver_mobile" id="receiver_mobile_eq" value="eq"
+                                                               checked="checked">
+                                                        <label class="form-check-label" for="receiver_mobile_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_language_select">Language</label>
+                                        <select class="form-control" data-ng-model="receiverLanguage"
+                                                id="receiver_language_select" aria-describedby="receiver_language_help"
+                                                name="receiver_language_select"
+                                                data-ng-options="item.id as item.name for item in languages_name">
+                                        </select>
+                                        <small id="receiver_language_help" class="form-text text-muted">This field is
+                                            for
+                                            search by Language
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_creation_date_input">CreationDate</label>
+                                        <input type="date" class="form-control" data-ng-model="receiverCreationDate"
+                                               id="receiver_creation_date_input"
+                                               name="receiver_creation_date_input"
+                                               aria-describedby="receiver_creation_date_help"
+                                               placeholder="CreationDate">
+                                        <small id="receiver_creation_date_help" class="form-text text-muted">This field
+                                            is for search by CreationDate
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverCreationDateOperators"
+                                                               type="radio"
+                                                               name="receiver_creation_date"
+                                                               id="receiver_creation_date_lt"
+                                                               value="lt">
+                                                        <label class="form-check-label" for="receiver_creation_date_lt">
+                                                            lt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverCreationDateOperators"
+                                                               type="radio"
+                                                               name="receiver_creation_date"
+                                                               id="receiver_creation_date_gt"
+                                                               value="gt">
+                                                        <label class="form-check-label" for="receiver_creation_date_gt">
+                                                            gt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverCreationDateOperators"
+                                                               type="radio"
+                                                               name="receiver_creation_date"
+                                                               id="receiver_creation_date_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="receiver_creation_date_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="receiver_modified_date_input">ModifiedDate</label>
+                                        <input type="date" class="form-control" data-ng-model="receiverModifiedDate"
+                                               id="receiver_modified_date_input"
+                                               name="receiver_modified_date_input"
+                                               aria-describedby="receiver_modified_date_help"
+                                               placeholder="ModifiedDate">
+                                        <small id="receiver_modified_date_help" class="form-text text-muted">This field
+                                            is for search by ModifiedDate
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverModifiedDateOperators"
+                                                               type="radio"
+                                                               name="receiver_modified_date"
+                                                               id="receiver_modified_date_lt"
+                                                               value="lt">
+                                                        <label class="form-check-label" for="receiver_modified_date_lt">
+                                                            lt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverModifiedDateOperators"
+                                                               type="radio"
+                                                               name="receiver_modified_date"
+                                                               id="receiver_modified_date_gt"
+                                                               value="gt">
+                                                        <label class="form-check-label" for="receiver_modified_date_gt">
+                                                            gt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="receiverModifiedDateOperators"
+                                                               type="radio"
+                                                               name="receiver_modified_date"
+                                                               id="receiver_modified_date_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="receiver_modified_date_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr data-ng-show="showReceiver"/>
+                    <div data-ng-show="showAddresser">
+                        <div class="row m-t-1">
+                            <center><h3>Addresser</h3></center>
+                        </div>
+                        <div class="row m-t-1">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_id_input">ID</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserID"
+                                               autocomplete="off" id="addresser_id_input"
+                                               name="addresser_id_input"
+                                               aria-describedby="addresser_id_help" placeholder="ID">
+                                        <small id="addresser_id_help" class="form-text text-muted">This field is for
+                                            search by ID
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_first_name_input">FirstName</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserFirstName"
+                                               autocomplete="off" id="addresser_first_name_input"
+                                               name="addresser_first_name_input"
+                                               aria-describedby="addresser_first_name_help" placeholder="FirstName">
+                                        <small id="addresser_first_name_help" class="form-text text-muted">This field is
+                                            for search by FirstName
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserFirstNameOperators" type="radio"
+                                                               name="addresser_first_name"
+                                                               id="addresser_first_name_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="addresser_first_name_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserFirstNameOperators" type="radio"
+                                                               name="addresser_first_name" id="addresser_first_name_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="addresser_first_name_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_last_name_input">LastName</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserLastName"
+                                               autocomplete="off" id="addresser_last_name_input"
+                                               name="addresser_last_name_input"
+                                               aria-describedby="addresser_last_name_help" placeholder="LastName">
+                                        <small id="addresser_last_name_help" class="form-text text-muted">This field is
+                                            for search by LastName
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserLastNameOperators" type="radio"
+                                                               name="addresser_last_name" id="addresser_last_name_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="addresser_last_name_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserLastNameOperators" type="radio"
+                                                               name="addresser_last_name" id="addresser_last_name_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="addresser_last_name_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_email_input" class="jd-block">Email</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserEmail"
+                                               autocomplete="off" id="addresser_email_input"
+                                               name="addresser_email_input"
+                                               aria-describedby="addresser_email_help" placeholder="Email">
+                                        <small id="addresser_email_help" class="form-text text-muted">This field is for
+                                            search by Email
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserEmailOperators" type="radio"
+                                                               name="addresser_email" id="addresser_email_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="addresser_email_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserEmailOperators" type="radio"
+                                                               name="addresser_email" id="addresser_email_eq" value="eq"
+                                                               checked="checked">
+                                                        <label class="form-check-label" for="addresser_email_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_address1_input">Address1</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserAddress1"
+                                               autocomplete="off" id="addresser_address1_input"
+                                               name="addresser_address1_input"
+                                               aria-describedby="addresser_address1_help" placeholder="Address1">
+                                        <small id="addresser_address1_help" class="form-text text-muted">This field is
+                                            for
+                                            search by Address1
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserAddress1Operators" type="radio"
+                                                               name="addresser_address1" id="addresser_address1_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="addresser_address1_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserAddress1Operators" type="radio"
+                                                               name="addresser_address1" id="addresser_address1_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="addresser_address1_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_address2_input">Address2</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserAddress2"
+                                               autocomplete="off" id="addresser_address2_input"
+                                               name="addresser_address2_input"
+                                               aria-describedby="addresser_address2_help" placeholder="Address2">
+                                        <small id="addresser_address2_help" class="form-text text-muted">This field is
+                                            for
+                                            search by Address2
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserAddress2Operators" type="radio"
+                                                               name="addresser_address2" id="addresser_address2_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="addresser_address2_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserAddress2Operators" type="radio"
+                                                               name="addresser_address1" id="addresser_address2_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="addresser_address2_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_city_select">City</label>
+                                        <select class="form-control" data-ng-model="addresserCity"
+                                                id="addresser_city_select"
+                                                name="addresser_city_select"
+                                                aria-describedby="addresser_city_help"
+                                                data-ng-options="item.id as item.name for item in cities_name">
+                                        </select>
+                                        <small id="addresser_city_help" class="form-text text-muted">This field is for
+                                            search by City
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_post_code_input">PostCode</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserPostCode"
+                                               autocomplete="off" id="addresser_post_code_input"
+                                               name="addresser_post_code_input"
+                                               aria-describedby="addresser_post_code_help" placeholder="PostCode">
+                                        <small id="addresser_post_code_help" class="form-text text-muted">This field is
+                                            for search by PostCode
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserPostCodeOperators" type="radio"
+                                                               name="addresser_post_code" id="addresser_post_code_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="addresser_post_code_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserPostCodeOperators" type="radio"
+                                                               name="addresser_post_code" id="addresser_post_code_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="addresser_post_code_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_phone_input" class="jd-block">Phone</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserPhone"
+                                               autocomplete="off" id="addresser_phone_input"
+                                               name="addresser_phone_input"
+                                               aria-describedby="addresser_phone_help" placeholder="Phone">
+                                        <small id="addresser_phone_help" class="form-text text-muted">This field is for
+                                            search by Phone
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserPhoneOperators" type="radio"
+                                                               name="addresser_phone" id="addresser_phone_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="addresser_phone_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserPhoneOperators" type="radio"
+                                                               name="addresser_phone" id="addresser_phone_eq" value="eq"
+                                                               checked="checked">
+                                                        <label class="form-check-label" for="addresser_phone_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_mobile_input" class="jd-block">Mobile</label>
+                                        <input type="text" class="form-control" data-ng-model="addresserMobile"
+                                               autocomplete="off" id="addresser_mobile_input"
+                                               name="addresser_mobile_input"
+                                               aria-describedby="addresser_mobile_help" placeholder="Mobile">
+                                        <small id="addresser_mobile_help" class="form-text text-muted">This field is for
+                                            search by Mobile
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserMobileOperators" type="radio"
+                                                               name="addresser_mobile" id="addresser_mobile_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="addresser_mobile_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserMobileOperators" type="radio"
+                                                               name="addresser_mobile" id="addresser_mobile_eq"
+                                                               value="eq"
+                                                               checked="checked">
+                                                        <label class="form-check-label" for="addresser_mobile_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_language_select">Language</label>
+                                        <select class="form-control" data-ng-model="addresserLanguage"
+                                                id="addresser_language_select"
+                                                name="addresser_language_select"
+                                                aria-describedby="addresser_language_help"
+                                                data-ng-options="item.id as item.name for item in languages_name">
+                                        </select>
+                                        <small id="addresser_language_help" class="form-text text-muted">This field is
+                                            for
+                                            search by Language
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_creation_date_input">CreationDate</label>
+                                        <input type="date" class="form-control" data-ng-model="addresserCreationDate"
+                                               id="addresser_creation_date_input"
+                                               name="addresser_creation_date_input"
+                                               aria-describedby="addresser_creation_date_help"
+                                               placeholder="CreationDate">
+                                        <small id="addresser_creation_date_help" class="form-text text-muted">This field
+                                            is for search by CreationDate
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserCreationDateOperators"
+                                                               type="radio"
+                                                               name="addresser_creation_date"
+                                                               id="addresser_creation_date_lt"
+                                                               value="lt">
+                                                        <label class="form-check-label"
+                                                               for="addresser_creation_date_lt">
+                                                            lt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserCreationDateOperators"
+                                                               type="radio"
+                                                               name="addresser_creation_date"
+                                                               id="addresser_creation_date_gt"
+                                                               value="gt">
+                                                        <label class="form-check-label"
+                                                               for="addresser_creation_date_gt">
+                                                            gt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserCreationDateOperators"
+                                                               type="radio"
+                                                               name="addresser_creation_date"
+                                                               id="addresser_creation_date_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label"
+                                                               for="addresser_creation_date_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="addresser_modified_date_input">ModifiedDate</label>
+                                        <input type="date" class="form-control" data-ng-model="addresserModifiedDate"
+                                               id="addresser_modified_date_input"
+                                               name="addresser_modified_date_input"
+                                               aria-describedby="addresser_modified_date_help"
+                                               placeholder="ModifiedDate">
+                                        <small id="addresser_modified_date_help" class="form-text text-muted">This field
+                                            is for search by ModifiedDate
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserModifiedDateOperators"
+                                                               type="radio"
+                                                               name="addresser_modified_date"
+                                                               id="addresser_modified_date_lt"
+                                                               value="lt">
+                                                        <label class="form-check-label"
+                                                               for="addresser_modified_date_lt">
+                                                            lt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserModifiedDateOperators"
+                                                               type="radio"
+                                                               name="addresser_modified_date"
+                                                               id="addresser_modified_date_gt"
+                                                               value="gt">
+                                                        <label class="form-check-label"
+                                                               for="addresser_modified_date_gt">
+                                                            gt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="addresserModifiedDateOperators"
+                                                               type="radio"
+                                                               name="addresser_modified_date"
+                                                               id="addresser_modified_date_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label"
+                                                               for="addresser_modified_date_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr data-ng-show="showAddresser"/>
+                    <div data-ng-show="showMessengerCategory">
+                        <div class="row m-t-1">
+                            <center><h3>MessengerCategory</h3></center>
+                        </div>
+                        <div class="row m-t-1">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="messenger_category_id_input">ID</label>
+                                        <input type="text" class="form-control" data-ng-model="messengerCategoryID"
+                                               autocomplete="off" id="messenger_category_id_input"
+                                               name="messenger_category_id_input"
+                                               aria-describedby="messenger_category_id_help" placeholder="ID">
+                                        <small id="messenger_category_id_help" class="form-text text-muted">This field
+                                            is for
+                                            search by ID
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="messenger_category_name_input" class="jd-block">Name</label>
+                                        <input type="text" class="form-control" data-ng-model="messengerCategoryName"
+                                               autocomplete="off" id="messenger_category_name_input"
+                                               name="messenger_category_name_input"
+                                               aria-describedby="messenger_category_name_help" placeholder="Name">
+                                        <small id="messenger_category_name_help" class="form-text text-muted">This field
+                                            is
+                                            for search by Name
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="messengerCategoryNameOperators"
+                                                               type="radio"
+                                                               name="messenger_category_name"
+                                                               id="messenger_category_name_like"
+                                                               value="like">
+                                                        <label class="form-check-label"
+                                                               for="messenger_category_name_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="messengerCategoryNameOperators"
+                                                               type="radio"
+                                                               name="messenger_category_name"
+                                                               id="messenger_category_name_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label"
+                                                               for="messenger_category_name_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr data-ng-show="showMessengerCategory"/>
+                    <div data-ng-show="showChildren">
+                        <div class="row m-t-1">
+                            <center><h3>Children</h3></center>
+                        </div>
+                        <div class="row m-t-1">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_id_input">ID</label>
+                                        <input type="text" class="form-control" data-ng-model="childrenID"
+                                               autocomplete="off" id="children_id_input"
+                                               name="children_id_input"
+                                               aria-describedby="children_id_help" placeholder="ID">
+                                        <small id="children_id_help" class="form-text text-muted">This field is for
+                                            search by ID
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <!--<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_parent_select">Parent</label>
+                                        <select class="form-control" data-ng-model="childrenParent" id="children_parent_select"
+                                                aria-describedby="children_parent_help"
+                                                data-ng-options="item.id as item.title for item in messages_title">
+                                        </select>
+                                        <small id="children_parent_help" class="form-text text-muted">This field is for
+                                            search by Parent Message
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>-->
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_sender_select">Sender</label>
+                                        <select class="form-control" data-ng-model="childrenSender"
+                                                id="children_sender_select"
+                                                name="children_sender_select"
+                                                aria-describedby="children_sender_help">
+                                            <option data-ng-repeat="item in users_email" value="{{item.id}}">
+                                                {{item.firstName}} {{item.lastName}}
+                                            </option>
+                                        </select>
+                                        <small id="children_sender_help" class="form-text text-muted">This field is for
+                                            search by Sender
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_recipient_select">Recipient</label>
+                                        <select class="form-control" data-ng-model="childrenRecipient"
+                                                id="children_recipient_select"
+                                                name="children_recipient_select"
+                                                aria-describedby="children_recipient_help">
+                                            <option data-ng-repeat="item in users_email" value="{{item.id}}">
+                                                {{item.firstName}} {{item.lastName}}
+                                            </option>
+                                        </select>
+                                        <small id="children_recipient_help" class="form-text text-muted">This field is
+                                            for
+                                            search by Recipient
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_title_input" style="display: block">Title</label>
+                                        <input type="text" class="form-control" data-ng-model="childrenTitle"
+                                               autocomplete="off" id="children_title_input"
+                                               name="children_title_input"
+                                               aria-describedby="children_title_help" placeholder="ChildrenTitle">
+                                        <small id="children_title_help" class="form-text text-muted">This field is
+                                            for search by Title
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenTitleOperators" type="radio"
+                                                               name="children_title" id="children_title_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="children_title_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenTitleOperators" type="radio"
+                                                               name="children_title" id="children_title_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="children_title_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_content_input">Content</label>
+                                        <input type="text" class="form-control" data-ng-model="childrenContent"
+                                               autocomplete="off" id="children_content_input"
+                                               name="children_content_input"
+                                               aria-describedby="children_content_help" placeholder="ChildrenContent">
+                                        <small id="children_content_help" class="form-text text-muted">This field is
+                                            for search by Content
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenContentOperators" type="radio"
+                                                               name="children_content" id="children_content_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="children_content_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenContentOperators" type="radio"
+                                                               name="children_content" id="children_content_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="children_content_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_category_select">Category</label>
+                                        <select class="form-control" data-ng-model="childrenCategory"
+                                                id="children_category_select"
+                                                name="children_category_select"
+                                                aria-describedby="children_category_help">
+                                            <option data-ng-repeat="item in messengerCategories_name"
+                                                    value="{{item.id}}">
+                                                {{item.name}}
+                                            </option>
+                                        </select>
+                                        <small id="children_category_help" class="form-text text-muted">This field is
+                                            for
+                                            search by Category
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_send_method_select">Send Method</label>
+                                        <select class="form-control" data-ng-model="childrenSendMethod"
+                                                id="children_send_method_select"
+                                                name="children_send_method_select"
+                                                aria-describedby="children_send_method_help">
+                                            <option value="site" selected>Site</option>
+                                        </select>
+                                        <small id="children_send_method_help" class="form-text text-muted">This field is
+                                            for search by SendMethod
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_status_select">Status</label>
+                                        <select class="form-control" data-ng-model="childrenStatus"
+                                                id="children_status_select"
+                                                name="children_status_select"
+                                                aria-describedby="children_status_help">
+                                            <option disabled selected>Choose Status</option>
+                                            <option value="sent">Sent</option>
+                                            <option value="read">Read</option>
+                                        </select>
+                                        <small id="children_status_help" class="form-text text-muted">This field is
+                                            for search by Status
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_support_status_select">SupportStatus</label>
+                                        <select class="form-control" data-ng-model="childrenSupportStatus"
+                                                id="children_support_status_select"
+                                                name="children_support_status_select"
+                                                aria-describedby="children_support_status_help">
+                                            <option disabled selected>Choose SupportStatus</option>
+                                            <option value="open">Sent</option>
+                                            <option value="closed">Read</option>
+                                            <option value="progress">Progress</option>
+                                            <option value="not support">Not Support</option>
+                                        </select>
+                                        <small id="children_support_status_help" class="form-text text-muted">This field
+                                            is
+                                            for search by SupportStatus
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_sent_date_input">SentDate</label>
+                                        <input type="date" class="form-control" data-ng-model="childrenSentDate"
+                                               id="children_sent_date_input"
+                                               name="children_sent_date_input"
+                                               aria-describedby="children_sent_date_help" placeholder="SentDate">
+                                        <small id="children_sent_date_help" class="form-text text-muted">This field
+                                            is for search by SentDate
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenSentDateOperators" type="radio"
+                                                               name="children_sent_date" id="children_sent_date_lt"
+                                                               value="lt">
+                                                        <label class="form-check-label" for="children_sent_date_lt">
+                                                            lt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenSentDateOperators" type="radio"
+                                                               name="children_sent_date" id="children_sent_date_gt"
+                                                               value="gt">
+                                                        <label class="form-check-label" for="children_sent_date_gt">
+                                                            gt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenSentDateOperators" type="radio"
+                                                               name="children_sent_date" id="children_sent_date_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="children_sent_date_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="children_read_date_input">ReadDate</label>
+                                        <input type="date" class="form-control" data-ng-model="childrenReadDate"
+                                               id="children_read_date_input"
+                                               name="children_read_date_input"
+                                               aria-describedby="children_read_date_help" placeholder="SentDate">
+                                        <small id="children_read_date_help" class="form-text text-muted">This field
+                                            is for search by SentDate
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenReadDateOperators" type="radio"
+                                                               name="children_read_date" id="children_read_date_lt"
+                                                               value="lt">
+                                                        <label class="form-check-label" for="children_read_date_lt">
+                                                            lt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenReadDateOperators" type="radio"
+                                                               name="children_read_date" id="children_read_date_gt"
+                                                               value="gt">
+                                                        <label class="form-check-label" for="children_read_date_gt">
+                                                            gt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="childrenReadDateOperators" type="radio"
+                                                               name="children_read_date" id="children_read_date_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="children_read_date_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr data-ng-show="showChildren"/>
+                    <div data-ng-show="showParent">
+                        <div class="row m-t-1">
+                            <center><h3>Parent</h3></center>
+                        </div>
+                        <div class="row m-t-1">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_id_input">ID</label>
+                                        <input type="text" class="form-control" data-ng-model="parentID"
+                                               autocomplete="off" id="parent_id_input"
+                                               name="parent_id_input"
+                                               aria-describedby="parent_id_help" placeholder="ID">
+                                        <small id="parent_id_help" class="form-text text-muted">This field is for
+                                            search by ID
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_parent_select">Parent</label>
+                                        <select class="form-control" data-ng-model="parentParent"
+                                                id="parent_parent_select"
+                                                name="parent_parent_select"
+                                                aria-describedby="parent_parent_help"
+                                                data-ng-options="item.id as item.title for item in messages_title">
+                                        </select>
+                                        <small id="parent_parent_help" class="form-text text-muted">This field is for
+                                            search by Parent Message
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_sender_select">Sender</label>
+                                        <select class="form-control" data-ng-model="parentSender"
+                                                id="parent_sender_select"
+                                                name="parent_sender_select"
+                                                aria-describedby="parent_sender_help">
+                                            <option data-ng-repeat="item in users_email" value="{{item.id}}">
+                                                {{item.firstName}} {{item.lastName}}
+                                            </option>
+                                        </select>
+                                        <small id="parent_sender_help" class="form-text text-muted">This field is for
+                                            search by Sender
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_recipient_select">Recipient</label>
+                                        <select class="form-control" data-ng-model="parentRecipient"
+                                                id="parent_recipient_select"
+                                                name="parent_recipient_select"
+                                                aria-describedby="parent_recipient_help">
+                                            <option data-ng-repeat="item in users_email" value="{{item.id}}">
+                                                {{item.firstName}} {{item.lastName}}
+                                            </option>
+                                        </select>
+                                        <small id="parent_recipient_help" class="form-text text-muted">This field is for
+                                            search by Recipient
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_title_input" style="display: block">Title</label>
+                                        <input type="text" class="form-control" data-ng-model="parentTitle"
+                                               autocomplete="off" id="parent_title_input"
+                                               name="parent_title_input"
+                                               aria-describedby="parent_title_help" placeholder="ParentTitle">
+                                        <small id="parent_title_help" class="form-text text-muted">This field is
+                                            for search by Title
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentTitleOperators" type="radio"
+                                                               name="parent_title" id="parent_title_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="parent_title_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentTitleOperators" type="radio"
+                                                               name="parent_title" id="parent_title_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="parent_title_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_content_input">Content</label>
+                                        <input type="text" class="form-control" data-ng-model="parentContent"
+                                               autocomplete="off" id="parent_content_input"
+                                               name="parent_content_input"
+                                               aria-describedby="parent_content_help" placeholder="ParentContent">
+                                        <small id="parent_content_help" class="form-text text-muted">This field is
+                                            for search by Content
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentContentOperators" type="radio"
+                                                               name="parent_content" id="parent_content_like"
+                                                               value="like">
+                                                        <label class="form-check-label" for="parent_content_like">
+                                                            like
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentContentOperators" type="radio"
+                                                               name="parent_content" id="parent_content_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="parent_content_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_category_select">Category</label>
+                                        <select class="form-control" data-ng-model="parentCategory"
+                                                id="parent_category_select"
+                                                name="parent_category_select"
+                                                aria-describedby="parent_category_help">
+                                            <option data-ng-repeat="item in messengerCategories_name"
+                                                    value="{{item.id}}">
+                                                {{item.name}}
+                                            </option>
+                                        </select>
+                                        <small id="parent_category_help" class="form-text text-muted">This field is for
+                                            search by Category
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_send_method_select">Send Method</label>
+                                        <select class="form-control" data-ng-model="parentSendMethod"
+                                                id="parent_send_method_select"
+                                                name="parent_send_method_select"
+                                                aria-describedby="parent_send_method_help">
+                                            <option value="site" selected>Site</option>
+                                        </select>
+                                        <small id="parent_send_method_help" class="form-text text-muted">This field is
+                                            for search by SendMethod
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_status_select">Status</label>
+                                        <select class="form-control" data-ng-model="parentStatus"
+                                                id="parent_status_select"
+                                                name="parent_status_select"
+                                                aria-describedby="parent_status_help">
+                                            <option disabled selected>Choose Status</option>
+                                            <option value="sent">Sent</option>
+                                            <option value="read">Read</option>
+                                        </select>
+                                        <small id="parent_status_help" class="form-text text-muted">This field is
+                                            for search by Status
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_support_status_select">SupportStatus</label>
+                                        <select class="form-control" data-ng-model="parentSupportStatus"
+                                                id="parent_support_status_select"
+                                                name="parent_support_status_select"
+                                                aria-describedby="parent_support_status_help">
+                                            <option disabled selected>Choose SupportStatus</option>
+                                            <option value="open">Sent</option>
+                                            <option value="closed">Read</option>
+                                            <option value="progress">Progress</option>
+                                            <option value="not support">Not Support</option>
+                                        </select>
+                                        <small id="parent_support_status_help" class="form-text text-muted">This field
+                                            is
+                                            for search by SupportStatus
+                                        </small>
+                                        <div class="w-100 h-5"></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_sent_date_input">SentDate</label>
+                                        <input type="date" class="form-control" data-ng-model="parentSentDate"
+                                               id="parent_sent_date_input"
+                                               name="parent_sent_date_input"
+                                               aria-describedby="parent_sent_date_help" placeholder="SentDate">
+                                        <small id="parent_sent_date_help" class="form-text text-muted">This field
+                                            is for search by SentDate
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentSentDateOperators" type="radio"
+                                                               name="parent_sent_date" id="parent_sent_date_lt"
+                                                               value="lt">
+                                                        <label class="form-check-label" for="parent_sent_date_lt">
+                                                            lt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentSentDateOperators" type="radio"
+                                                               name="parent_sent_date" id="parent_sent_date_gt"
+                                                               value="gt">
+                                                        <label class="form-check-label" for="parent_sent_date_gt">
+                                                            gt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentSentDateOperators" type="radio"
+                                                               name="parent_sent_date" id="parent_sent_date_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="parent_sent_date_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="parent_read_date_input">ReadDate</label>
+                                        <input type="date" class="form-control" data-ng-model="parentReadDate"
+                                               id="parent_read_date_input"
+                                               name="parent_read_date_input"
+                                               aria-describedby="parent_read_date_help" placeholder="ReadDate">
+                                        <small id="parent_read_date_help" class="form-text text-muted">This field
+                                            is for search by SentDate
+                                        </small>
+                                        <div class="w-100 h-5">
+                                            <div class="col-xs-12">
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentReadDateOperators" type="radio"
+                                                               name="parent_read_date" id="parent_read_date_lt"
+                                                               value="lt">
+                                                        <label class="form-check-label" for="parent_read_date_lt">
+                                                            lt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentReadDateOperators" type="radio"
+                                                               name="parent_read_date" id="parent_read_date_gt"
+                                                               value="gt">
+                                                        <label class="form-check-label" for="parent_read_date_gt">
+                                                            gt
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input"
+                                                               data-ng-model="parentReadDateOperators" type="radio"
+                                                               name="parent_read_date" id="parent_read_date_eq"
+                                                               value="eq" checked="checked">
+                                                        <label class="form-check-label" for="parent_read_date_eq">
+                                                            eq
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr data-ng-show="showParent"/>
+                    <div class="row m-t-1">
+                        <div class="col-xs-12" data-ng-show="showButton">
+                            <button class="btn btn-info">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="message_search_result" role="tabpanel"
+             aria-labelledby="message_search_result_tab">
+            <div class="jd-rest-message-result-block">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Messages</h3>
+                        <table id="table_messages" class="display compact" cellspacing="0" width="100%" style="margin-bottom: 100px;">
+                            <thead>
+                            <tr>
+                                <th style="text-transform: uppercase; text-align: center;">ID</th>
+                                <th style="text-transform: uppercase; text-align: center;">Sender</th>
+                                <th style="text-transform: uppercase; text-align: center;">Title</th>
+                                <th style="text-transform: uppercase; text-align: center;">Category</th>
+                                <th style="text-transform: uppercase; text-align: center;">Sent Date</th>
+                                <th style="text-transform: uppercase; text-align: center;">Read Date</th>
+                            </tr>
+                            </thead>
+                            <tbody id="table_body">
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

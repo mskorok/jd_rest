@@ -1,0 +1,51 @@
+<div class="container" data-ng-app="bookingCreate" data-ng-controller="createCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+    <div class="jd-rest-booking-models-block" id="jd_rest_booking_models_block">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Booking related Models</h3>
+                <div id="model_buttons">
+                    <span id="bookingitems_click" data-ng-click="showBookingItems = !showBookingItems"
+                          class="jd-pointer"
+                          style="{{ showBookingItems ? 'font-weight: 600' : 'font-weight: 300'}}">BookingItems </span>
+                    <!--<span id="user_click" data-ng-click="showUser = !showUser"-->
+                    <!--style="{{ showUser ? 'font-weight: 600' : 'font-weight: 300'}}; cursor: pointer;">User </span>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jd-f-right">
+        <a class="btn btn-success hidden" href="javascript:void 0" id="jd_booking_payment">Payment</a>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center>
+                <div id="jd_error_container" style="color: red;"></div>
+            </center>
+        </div>
+    </div>
+    <div id="booking_create_container"></div>
+    <div>
+        <div class="modal fade" id="biModal" tabindex="-1" role="dialog" aria-labelledby="biModalLabel" data-form-id="">
+            <div class="modal-dialog jd-width-modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="biModalLabel">Availability</h4>
+                    </div>
+                    <div class="modal-body p-l-20">
+                        <table width="99%" style="margin:0;">
+                            <tbody id="modal_tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

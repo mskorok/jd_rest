@@ -1,0 +1,56 @@
+<div class="container" data-ng-app="messenger" data-ng-controller="messengerCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+    <div class="jd-rest-recipient-block" id="jd_rest_recipient_block">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Recipients</h3>
+                <div id="recipients_buttons">
+                    <span id="User_click" data-ng-click="sendUser = !sendUser" class="jd-pointer"
+                          style="{{ sendUser ? 'font-weight: 600;' : 'font-weight: 300;'}}">User, </span>
+                    <span id="All_click" data-ng-click="sendAll = !sendAll" class="jd-pointer"
+                          style="{{ sendAll ? 'font-weight: 600;' : 'font-weight: 300;'}}">All Users, </span>
+                    <span id="Admin_click" data-ng-click="sendAdmin = !sendAdmin" class="jd-pointer"
+                          style="{{ sendAdmin ? 'font-weight: 600;' : 'font-weight: 300;'}}">Admin, </span>
+                    <span id="JourdayProvider_click" data-ng-click="sendJourdayProvider = !sendJourdayProvider" class="jd-pointer"
+                          style="{{ sendJourdayProvider ? 'font-weight: 600;' : 'font-weight: 300;'}}">Jourday Provider, </span>
+                    <span id="JourdayBeneficiary_click" data-ng-click="sendJourdayBeneficiary = !sendJourdayBeneficiary" class="jd-pointer"
+                          style="{{ sendJourdayBeneficiary ? 'font-weight: 600;' : 'font-weight: 300;'}}">Jourday Beneficiary, </span>
+                    <span id="JourdayBeneficiaries_click" data-ng-click="sendJourdayBeneficiaries = !sendJourdayBeneficiaries" class="jd-pointer"
+                          style="{{ sendJourdayBeneficiaries ? 'font-weight: 600;' : 'font-weight: 300;'}}">Jourday Beneficiaries, </span>
+                    <span id="ActivityProvider_click" data-ng-click="sendActivityProvider = !sendActivityProvider" class="jd-pointer"
+                          style="{{ sendActivityProvider ? 'font-weight: 600;' : 'font-weight: 300;'}}">Activity Provider, </span>
+                    <span id="ActivityProviders_click" data-ng-click="sendActivityProviders = !sendActivityProviders" class="jd-pointer"
+                          style="{{ sendActivityProviders ? 'font-weight: 600;' : 'font-weight: 300;'}}">Activity Providers, </span>
+                    <span id="CustomerSupport_click" data-ng-click="sendCustomerSupport = !sendCustomerSupport" class="jd-pointer"
+                          style="{{ sendCustomerSupport ? 'font-weight: 600;' : 'font-weight: 300;'}}">Customer Support, </span>
+                    <span id="SalesResponsible_click" data-ng-click="sendSalesResponsible = !sendSalesResponsible" class="jd-pointer"
+                          style="{{ sendSalesResponsible ? 'font-weight: 600;' : 'font-weight: 300;'}}">Sales Responsible, </span>
+                    <span id="Reseller_click" data-ng-click="sendReseller = !sendReseller" class="jd-pointer"
+                          style="{{ sendReseller ? 'font-weight: 600;' : 'font-weight: 300;'}}">Reseller, </span>
+                    <span id="ActiveReseller_click" data-ng-click="sendActiveReseller = !sendActiveReseller" class="jd-pointer"
+                          style="{{ sendActiveReseller ? 'font-weight: 600;' : 'font-weight: 300;'}}">Active Resellers, </span>
+                    <span id="Reseller_s_click" data-ng-click="sendResellers = !sendResellers" class="jd-pointer"
+                          style="{{ sendResellers ? 'font-weight: 600;' : 'font-weight: 300;'}}">Resellers, </span>
+                    <span id="Affiliate_click" data-ng-click="sendAffiliate = !sendAffiliate" class="jd-pointer"
+                          style="{{ sendAffiliate ? 'font-weight: 600;' : 'font-weight: 300;'}}">Affiliate, </span>
+                    <span id="ActiveAffiliate_click" data-ng-click="sendActiveAffiliate = !sendActiveAffiliate" class="jd-pointer"
+                          style="{{ sendActiveAffiliate ? 'font-weight: 600;' : 'font-weight: 300;'}}">Active Affiliates, </span>
+                    <span id="Affiliate_s_click" data-ng-click="sendAffiliates = !sendAffiliates" class="jd-pointer"
+                          style="{{ sendAffiliates ? 'font-weight: 600;' : 'font-weight: 300;'}}">Affiliates, </span>
+                    <span id="Customer_click" data-ng-click="sendCustomer = !sendCustomer" class="jd-pointer"
+                          style="{{ sendCustomer ? 'font-weight: 600;' : 'font-weight: 300;'}}">Customer, </span>
+                    <span id="Customer_s_click" data-ng-click="sendCustomers = !sendCustomers" class="jd-pointer"
+                          style="{{ sendCustomers ? 'font-weight: 600;' : 'font-weight: 300;'}}">Customers, </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center><div  id="jd_error_container" style="color: red;"></div></center>
+        </div>
+    </div>
+
+    <div id="messenger_container"></div>
+</div>

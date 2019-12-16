@@ -1,0 +1,40 @@
+<div class="container" data-ng-app="paymentList" data-ng-controller="paymentCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+    <h3>Payments</h3>
+    <table id="table_payments" class="display compact" cellspacing="0" width="100%" style="margin-bottom: 100px;">
+        <thead>
+        <tr>
+            <th style="text-transform: uppercase; text-align: center;">ID</th>
+            <th style="text-transform: uppercase; text-align: center;">Amount</th>
+            <th style="text-transform: uppercase; text-align: center;">User</th>
+            <th style="text-transform: uppercase; text-align: center;">Description</th>
+            <th style="text-transform: uppercase; text-align: center;">Type</th>
+            <th style="text-transform: uppercase; text-align: center;">Booking ID</th>
+            <th style="text-transform: uppercase; text-align: center;">Sender</th>
+            <th style="text-transform: uppercase; text-align: center;">Account</th>
+            <th style="text-transform: uppercase; text-align: center;">Bank</th>
+        </tr>
+        </thead>
+        <tbody id="table_body">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="jd-f-left">
+        <a class="btn btn-info hidden" href="javascript:void 0" id="jd_payment_list_previous"><< Previous {{jd_rest_limit}}</a>
+    </div>
+    <div class="jd-f-right">
+        <a class="btn btn-info hidden" href="javascript:void 0" id="jd_payment_list_next">Next {{jd_rest_limit}} >></a>
+    </div>
+    <div style="margin-top: 50px;"></div>
+</div>

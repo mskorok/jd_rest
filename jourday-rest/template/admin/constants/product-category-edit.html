@@ -1,0 +1,35 @@
+<div class="container" data-ng-app="adminEdit" data-ng-controller="editCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+
+    <div class="jd-rest-product-models-block" id="rest_admin_models_block">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Related models</h3>
+                <div id="model_buttons">
+                    <span id="CancellationPolicy_click" data-ng-click="showCancellationPolicy = !showCancellationPolicy"
+                          class="jd-pointer"
+                          style="{{ showCancellationPolicy ? 'font-weight: 600' : 'font-weight: 300'}}">
+                        CancellationPolicy, &nbsp;
+                    </span><span id="ProductCategoryToCancellationPolicy_click"
+                          data-ng-click="showProductCategoryToCancellationPolicy = !showProductCategoryToCancellationPolicy"
+                          class="jd-pointer"
+                          style="{{ showProductCategoryToCancellationPolicy ? 'font-weight: 600' : 'font-weight: 300'}}">
+                        ProductCategoryToCancellationPolicy
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center><div  id="jd_error_container" style="color: red;"></div></center>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center><div  id="jd_success_container" style="color: darkolivegreen;"></div></center>
+        </div>
+    </div>
+    <div id="admin_edit_container"></div>
+</div>

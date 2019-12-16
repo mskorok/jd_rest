@@ -1,0 +1,29 @@
+<div class="container" data-ng-app="userList" data-ng-controller="userCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+    <h3>Users</h3>
+    <table id="table_users" class="display compact" cellspacing="0" width="100%" style="margin-bottom: 100px;">
+        <thead>
+        <tr>
+            <th style="text-transform: uppercase; text-align: center;">ID</th>
+            <th style="text-transform: uppercase; text-align: center;">Name</th>
+            <th style="text-transform: uppercase; text-align: center;">Surname</th>
+            <th style="text-transform: uppercase; text-align: center;">Email</th>
+        </tr>
+        </thead>
+        <tbody id="table_body">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="jd-f-left">
+        <a class="btn btn-info hidden" href="javascript:void 0" id="jd_user_list_previous"><< Previous {{jd_rest_limit}}</a>
+    </div>
+    <div class="jd-f-right">
+        <a class="btn btn-info hidden" href="javascript:void 0" id="jd_user_list_next">Next {{jd_rest_limit}} >></a>
+    </div>
+    <div style="margin-top: 50px;"></div>
+</div>

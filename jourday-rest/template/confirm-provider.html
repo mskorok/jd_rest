@@ -1,0 +1,36 @@
+<div class="container" data-ng-app="confirm" data-ng-controller="confirmCtr">
+    <div data-ng-include="main_navbar"></div>
+    <div data-ng-include="admin_navbar"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center>
+                <div id="jd_error_container" style="color: red;"></div>
+            </center>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <center>
+                <div id="jd_success_container" style="color: darkolivegreen;"></div>
+            </center>
+        </div>
+    </div>
+    <div id="confirm_container">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <form id="confirm_user">
+                        <div class="form-group">
+                            <label for="confirm_user_select">Providers</label>
+                            <select id="confirm_user_select" type="text" name="user" class="form-control">
+                                <option value="">Choose Provider</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <button type="submit" id="confirm_button" class="btn btn-info" style="margin-bottom: 50px">Confirm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
