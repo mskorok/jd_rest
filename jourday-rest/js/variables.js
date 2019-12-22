@@ -1,7 +1,253 @@
+//global variables
+
+var rest_api_host = 'http://api.arcana.pw';
+var rest_paypal = 'rest-paypal';
+// REPORT
+var jd_resellers_url = 'report-resellers-item';
+var jd_resellers_active_url = 'report-resellers-active-item';
+var jd_affiliates_url = 'report-affiliates-item';
+var jd_affiliates_active_url = 'report-affiliates-active-item';
+var jd_customers_url = 'report-customers-item';
+var jd_beneficiaries_url = 'report-beneficiaries-item';
+var jd_providers_url = 'report-providers-item';
+var jd_jourday_provider_url = 'report-jourday-provider-item';
+var jd_live_products_url = 'report-live-products-item';
+var jd_upcoming_products_url = 'report-upcoming-products-item';
+var jd_payable_url = 'report-payable-item';
+var jd_paid_url = 'report-paid-item';
+var jd_receivables_url = 'report-receivables-item';
+var jd_totals_url = 'report-totals-item';
+var jd_comment_url = 'report-comment-item';
+var jd_review_url = 'report-review-item';
+var jd_resellers_list_url = 'report-resellers-list';
+var jd_resellers_active_list_url = 'report-resellers-active-list';
+var jd_affiliates_list_url = 'report-affiliates-list';
+var jd_affiliates_active_list_url = 'report-affiliates-active-list';
+var jd_customers_list_url = 'report-customers-list';
+var jd_beneficiaries_list_url = 'report-beneficiaries-list';
+var jd_providers_list_url = 'report-providers-list';
+var jd_jourday_provider_list_url = 'report-jourday-provider-list';
+var jd_live_products_list_url = 'report-live-products-list';
+var jd_upcoming_products_list_url = 'report-upcoming-products-list';
+var jd_payable_list_url = 'report-payable-list';
+var jd_paid_list_url = 'report-paid-list';
+var jd_receivables_list_url = 'report-receivables-list';
+var jd_totals_list_url = 'report-totals-list';
+var jd_comment_list_url = 'report-comment-list';
+var jd_review_list_url = 'report-review-list';
+
+//OWNER
+
+var jd_owner_product_url = 'products/owner';
+var jd_owner_booking_url = 'booking/owner';
+var jd_owner_message_url = 'messages/owner';
+
+//ADMIN
+
+var rest_admin_activity_category_create = 'activity-category-create';
+var rest_admin_activity_category_edit = 'activity-category-edit';
+var rest_admin_activity_category_show = 'activity-category-show';
+var rest_admin_activity_category_list = 'activity-category-list';
+
+var rest_admin_activity_type_create = 'activity-type-create';
+var rest_admin_activity_type_edit = 'activity-type-edit';
+var rest_admin_activity_type_show = 'activity-type-show';
+var rest_admin_activity_type_list = 'activity-type-list';
+
+var rest_admin_amenities_create = 'amenities-create';
+var rest_admin_amenities_edit = 'amenities-edit';
+var rest_admin_amenities_show = 'amenities-show';
+var rest_admin_amenities_list = 'amenities-list';
+
+var rest_admin_cancellation_policy_create = 'cancellation-policy-create';
+var rest_admin_cancellation_policy_edit = 'cancellation-policy-edit';
+var rest_admin_cancellation_policy_show = 'cancellation-policy-show';
+var rest_admin_cancellation_policy_list = 'cancellation-policy-list';
+
+var rest_admin_city_create = 'city-create';
+var rest_admin_city_edit = 'city-edit';
+var rest_admin_city_show = 'city-show';
+var rest_admin_city_list = 'city-list';
+
+var rest_admin_country_create = 'country-create';
+var rest_admin_country_edit = 'country-edit';
+var rest_admin_country_show = 'country-show';
+var rest_admin_country_list = 'country-list';
+
+var rest_admin_language_create = 'language-create';
+var rest_admin_language_edit = 'language-edit';
+var rest_admin_language_show = 'language-show';
+var rest_admin_language_list = 'language-list';
+
+var rest_admin_physical_level_create = 'physical-level-create';
+var rest_admin_physical_level_edit = 'physical-level-edit';
+var rest_admin_physical_level_show = 'physical-level-show';
+var rest_admin_physical_level_list = 'physical-level-list';
+
+var rest_admin_product_category_create = 'product-category-create';
+var rest_admin_product_category_edit = 'product-category-edit';
+var rest_admin_product_category_show = 'product-category-show';
+var rest_admin_product_category_list = 'product-category-list';
+
+var rest_admin_settings_create = 'settings-create';
+var rest_admin_settings_edit = 'settings-edit';
+var rest_admin_settings_show = 'settings-show';
+var rest_admin_settings_list = 'settings-list';
+
+var rest_admin_sales_to_countries_create = 'sales-to-countries-create';
+var rest_admin_sales_to_countries_edit = 'sales-to-countries-edit';
+var rest_admin_sales_to_countries_show = 'sales-to-countries-show';
+var rest_admin_sales_to_countries_list = 'sales-to-countries-list';
+
+var rest_admin_autoresponder_create = 'autoresponder-create';
+var rest_admin_autoresponder_edit = 'autoresponder-edit';
+var rest_admin_autoresponder_show = 'autoresponder-show';
+var rest_admin_autoresponder_list = 'autoresponder-list';
+
+var rest_admin_document_create = 'document-create';
+var rest_admin_document_edit = 'document-edit';
+var rest_admin_document_show = 'document-show';
+var rest_admin_document_list = 'document-list';
+
+var rest_admin_mail_create = 'mail-create';
+var rest_admin_mail_edit = 'mail-edit';
+var rest_admin_mail_show = 'mail-show';
+var rest_admin_mail_list = 'mail-list';
+
+var rest_admin_template_create = 'template-create';
+var rest_admin_template_edit = 'template-edit';
+var rest_admin_template_show = 'template-show';
+var rest_admin_template_list = 'template-list';
+
+var rest_admin_voucher_create = 'voucher-create';
+var rest_admin_voucher_edit = 'voucher-edit';
+var rest_admin_voucher_show = 'voucher-show';
+var rest_admin_voucher_list = 'voucher-list';
+
+
+var rest_admin_confirm_user = 'confirm-user';
+var rest_admin_confirm_provider = 'confirm-provider';
+
+var rest_admin_subscriptions_list = 'subscription-list';
+var rest_admin_subscriptions_show = 'subscription-show';
+var rest_admin_subscriptions_create = 'subscription-create';
+var rest_admin_subscriptions_edit = 'subscription-edit';
+var rest_admin_subscriber_add = 'subscriber-add';
+
+var rest_admin_notification_send = 'notification-send';
+
+
+//SITE
+
+var jd_discount_to_offer_create_url = 'rest-discount-to-offer-create';
+var jd_discount_to_offer_edit_url = 'rest-discount-to-offer-edit';
+var jd_discount_to_offer_show_url = 'rest-discount-to-offer-show';
+var jd_discount_to_offer_list_url = 'rest-discount-to-offer-list';
+
+var jd_product_to_amenities_add_create_url = 'rest-product-to-amenities-add-create';
+var jd_product_to_amenities_add_edit_url = 'rest-product-to-amenities-add-edit';
+var jd_product_to_amenities_add_show_url = 'rest-product-to-amenities-add-show';
+var jd_product_to_amenities_add_list_url = 'rest-product-to-amenities-add-list';
+
+var jd_product_to_amenities_remove_create_url = 'rest-product-to-amenities-remove-create';
+var jd_product_to_amenities_remove_edit_url = 'rest-product-to-amenities-remove-edit';
+var jd_product_to_amenities_remove_show_url = 'rest-product-to-amenities-remove-show';
+var jd_product_to_amenities_remove_list_url = 'rest-product-to-amenities-remove-list';
+
+
+var jd_product_to_language_create_url = 'rest-product-to-language-create';
+var jd_product_to_language_edit_url = 'rest-product-to-language-edit';
+var jd_product_to_language_show_url = 'rest-product-to-language-show';
+var jd_product_to_language_list_url = 'rest-product-to-language-list';
+
+
+var jd_rest_host = 'http://jd.old/wp-admin/admin-ajax.php';//TODO
+var jd_rest_admin_url = 'template/admin-navbar.html';
+var jd_rest_navbar_url = 'template/navbar.html';
+var jd_edit_user_key = 'wp-ajax-edit-user';
+var jd_edit_product_key = 'wp-ajax-key';
+var jd_profile_key = 'user';
+var jd_user_edit_get_url = 'wp/user/edit/get';
+var jd_user_show_get_url = 'wp/user/show/get';
+var jd_payment_get_url = 'wp/payment/get';
+var jd_payment_show_url = 'wp/payment/show';
+var jd_message_create_url = 'wp/message/create';
+var jd_message_get_url = 'wp/message/get';
+var jd_message_show_url = 'wp/message/show';
+var jd_product_create_get_url = 'wp/product/create/';
+var jd_product_edit_get_url = 'wp/product/edit/';
+var jd_product_show_get_url = 'wp/product/show/';
+var jd_comments_create_get_url = 'wp/comments/create/';
+var jd_comments_edit_get_url = 'wp/comments/edit/';
+var jd_comments_show_get_url = 'wp/comments/show/';
+var jd_review_create_get_url = 'wp/review/create/';
+var jd_review_edit_get_url = 'wp/review/edit/';
+var jd_review_show_get_url = 'wp/review/show/';
+var jd_form_create_url = 'wp/form/create/';
+var jd_form_create_main_url = 'wp/form/create/main';
+var jd_form_create_with_image_url = 'wp/form/create/image';
+var jd_form_create_related_url = 'wp/form/create/related/';
+var jd_form_create_related_image_url = 'wp/form/create/related/image/';
+var jd_form_delete_related_url = 'wp/form/delete/related';
+var jd_form_get_url = 'wp/form/get/';
+var jd_final_price_get_url = 'booking/final/price';
+var jd_login_get_url = 'wp/login';
+var jd_login_post_url = 'users/authenticate';
+var jd_user_list_url = 'rest-user-list';
+var jd_user_item_url = 'rest-user-item';
+var jd_user_edit_url = 'rest-user-edit';
+var jd_user_create_url = 'rest-user-create';
+var jd_user_search_url = 'rest-user-search';
+var jd_profile_url = 'rest-user-profile';
+var jd_profile_edit_url = 'rest-profile-edit';
+var jd_profile_create_url = 'rest-profile-create';
+var jd_profile_autoresponder_url = 'rest-profile-autoresponder';
+var jd_message_list_url = 'rest-message-list';
+var jd_message_item_url = 'rest-message-item';
+var jd_message_search_url = 'rest-message-search';
+var jd_payment_list_url = 'rest-payment-list';
+var jd_payment_item_url = 'rest-payment-item';
+var jd_payment_search_url = 'rest-payment-search';
+var jd_product_list_url = 'rest-product-list';
+var jd_product_item_url = 'rest-product-item';
+var jd_product_search_url = 'rest-product-search';
+var jd_product_edit_url = 'rest-product-edit';
+var jd_product_create_url = 'rest-product-create';
+var jd_booking_list_url = 'rest-booking-list';
+var jd_booking_item_url = 'rest-booking-item';
+var jd_booking_search_url = 'rest-booking-search';
+var jd_booking_edit_url = 'rest-booking-edit';
+var jd_booking_create_url = 'rest-booking-create';
+var jd_booking_create_get_url = 'wp/booking/create/';
+var jd_booking_edit_get_url = 'wp/booking/edit/';
+var jd_booking_show_get_url = 'wp/booking/show/';
+var jd_subscriptions_create_url = 'wp/subscriptions/create/';
+var jd_subscriptions_edit_url = 'wp/subscriptions/edit/';
+var jd_subscriptions_show_url = 'wp/subscriptions/show/';
+var jd_subscriber_add_url = '/wp/subscribers/create/';
+var jd_notification_send_url = 'wp/notification/show/';
+var jd_home_url = 'rest-home';
+var jd_login_url = 'rest-login';
+var jd_signup_url = 'rest-signup';
+var jd_messenger_url = 'rest-messenger';
+
+
+
 var navbar = {
   admin: 'template/admin-navbar.html',
   nav: 'template/navbar.html'
 };
+
+var scripts = [
+  'js/vendor/js/jquery/jquery.js',
+  'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js',
+  'js/components/awesomplete.js',
+  'http://underscorejs.org/underscore-min.js',
+  'js/components/jquery.dataTables.min.js',
+  'css/components/jquery.dataTables.min.css',
+  'css/components/jquery.dataTables.reset.css',
+  'css/components/awesomplete.css'
+];
 var templates = {
   'home': {
     'title': 'Jourday REST API WP UI',
